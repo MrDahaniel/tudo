@@ -7,4 +7,8 @@ pub enum EditorScreen {
 
 pub enum EditorMode {}
 
-pub struct Editor {}
+pub struct Editor {
+    mode: Option<EditorMode>,
+}
+
+impl Editor {}
