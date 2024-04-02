@@ -1,22 +1,27 @@
-use color_eyre::owo_colors::OwoColorize;
+use ratatui::symbols::border;
 use ratatui::{prelude::*, widgets::*};
-use ratatui::symbols
 
 use serde::{Deserialize, Serialize};
 
 use super::tasklist::TaskList;
 
-#[derive(Debug, Default, Clone, Serialize, Deserialize)]
-pub struct Lists {
-    tasklist: Vec<TaskList>,
+#[derive(Debug, Default, Serialize, Deserialize)]
+pub(super) struct Lists {
+    pub tasklist: Vec<TaskList>,
 }
 
 impl Lists {}
 
-impl Widget for List {
+impl Widget for Lists {
     fn render(self, area: Rect, buf: &mut Buffer) {
-        let title = Title::from(" Lists ".on_truecolor(r, g, b));
+        let title = block::Title::from(" Lists ".on_white().black().bold());
+        let block = Block::default()
+            .title(title.alignment(Alignment::Left))
+            .borders(Borders::ALL)
+            .border_set(border::PLAIN);
 
-
+        let list = List::default()
+            .items(self.tasklist.iter().map(|k| k.name.clone()).into_iter())
+            .block(block);
     }
 }

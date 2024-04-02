@@ -4,8 +4,8 @@ use super::task::Task;
 
 #[derive(Debug, Default, Deserialize, Serialize)]
 pub(super) struct TaskList {
-    name: String,
-    tasks: Vec<Task>,
+    pub name: String,
+    pub tasks: Vec<Task>,
 }
 
 impl TaskList {

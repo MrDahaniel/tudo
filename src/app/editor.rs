@@ -1,3 +1,6 @@
+use ratatui::prelude::*;
+use ratatui::{widgets::Widget, Frame};
+
 pub enum EditorScreen {
     Main,
     TaskLists,
@@ -11,4 +14,14 @@ pub struct Editor {
     mode: Option<EditorMode>,
 }
 
-impl Editor {}
+impl Widget for &Editor {
+    fn render(self, area: Rect, buf: &mut Buffer) {
+        todo!()
+    }
+}
+
+impl Editor {
+    fn render_frame(&self, frame: &mut Frame) {
+        frame.render_widget(self, frame.size());
+    }
+}

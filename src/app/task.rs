@@ -37,12 +37,12 @@ pub(super) enum Priority {
 
 #[derive(Debug, Default, Serialize, Deserialize)]
 pub(super) struct Task {
-    description: String,
-    status: TaskStatus,
-    urgency: Urgency,
-    complexity: Complexity,
-    priority: Priority,
-    tasks: Vec<Task>,
+    pub description: String,
+    pub status: TaskStatus,
+    pub urgency: Urgency,
+    pub complexity: Complexity,
+    pub priority: Priority,
+    pub tasks: Vec<Task>,
 }
 
 impl Task {
